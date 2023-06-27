@@ -6,10 +6,17 @@
 
 Card::Card(std::string name): m_name(name) {}
 
-std::ostream& operator<<(std::ostream& os, const Card& card)
+std::ostream& operator<<(std::ostream& os, const Card& card)//cout << card
 {
-    printCardDetails(os,card.m_name);
-    printEndOfCardDetails(os);
+    card.printCard(os);
     return os;
 }
+
+void Card::printCard(std::ostream& os)const
+{
+    printCardDetails(os,m_name);
+    printEndOfCardDetails(os);
+}
+
+
 

@@ -2,16 +2,28 @@
 #define EX4_BATTLECARD_H
 
 #include "Card.h"
-class Battle:public Card{
+class Battle:public Card {
 public:
-    Battle(std::string type) : Card(type){};
-    virtual void applyEncounter(Player& player) const override = 0;
+    Battle(std::string type) : Card(type) {};
+
+    virtual void applyEncounter(Player &player) const override = 0;
+
+    void printCard(std::ostream &os) const override
+    {
+        printCardDetails(os,m_name);
+        printMonsterDetails(os,m_force,m_damage,m_loot,m_name == "Dragon");
+        printEndOfCardDetails(os);
+    }
+
+
+    /*
     friend std::ostream& operator<<(std::ostream& os, const Battle& battle){
             printCardDetails(os,battle.m_name);
             printMonsterDetails(os,battle.m_force,battle.m_damage,battle.m_loot,battle.m_name=="Dragon");
             printEndOfCardDetails(os);
             return os;
     }
+     */
 
 protected:
     int m_force ;

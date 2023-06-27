@@ -8,3 +8,11 @@ std::ostream& operator<<(std::ostream& os, const Battle& battle)
     return os;
 }
 */
+/*
+void Battle::printCard(std::ostream &os) const
+{
+    printCardDetails(os,m_name);
+    printMonsterDetails(os,m_force,m_damage,m_loot,m_name == "Dragon");
+    printEndOfCardDetails(os);
+}
+*/

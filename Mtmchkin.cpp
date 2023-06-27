@@ -295,15 +295,35 @@ Mtmchkin::Mtmchkin(const std::string &fileName):m_mtmDeck(fileName) {
     m_count=0;
     m_playedTurns=0;
     printStartGameMessage();
-    int numOfPlayers = 0;
     printEnterTeamSizeMessage();
-    std::cin >> numOfPlayers;
-    //Exception e;
-    while (!(checkInputOfPlayers(numOfPlayers))) {
+    std::string userInput;
+    int numOfPlayers;
+    bool inputValid = false;
+    while(!inputValid){
+        try{
+            std::getline(std::cin, userInput);
+            numOfPlayers = std::stoi(userInput);
+            if(!checkInputOfPlayers(numOfPlayers)){
+                throw badUserInput();
+            }
+            else{
+                inputValid = true;
+            }
+            inputValid = true;
+        }
+        catch(...){
+            printInvalidTeamSize();
+            printEnterTeamSizeMessage();
+        }
+    }
+    //int numOfPlayers = 0;
+    /*
+    std::getline(std::cin, numOfPlayers);
+    while (!(checkInputOfPlayers(std::stoi(numOfPlayers)))) {
         printInvalidTeamSize();
         std::cin >> numOfPlayers;
     }
-
+     */
     std::string name;
     std::string job;
     for (int i = 0; i < numOfPlayers; i++) {

@@ -7,7 +7,7 @@
 #include <string>
 #include "Player.h"
 #include "utilities.h"
-#include "CardUtilitis.h"
+
 
 /*
  *  CardType:
@@ -57,7 +57,7 @@ public:
     Card& operator=(const Card& other) = default;
 
     //methods jonah add
-    //virtual void printCard(std::ostream& os)const=0;//cout<< card
+    virtual void printCard(std::ostream& os)const;//cout<< card
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
 
 

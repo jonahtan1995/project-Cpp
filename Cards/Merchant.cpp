@@ -3,6 +3,7 @@
 static const int NO_ACTION = 0;
 static const int HP = 1;
 static const int POWER = 2;
+
 static const int FORCE = 1;
 
 static const int HP_COST = 5;
@@ -13,14 +14,21 @@ Merchant::Merchant() : Card("Merchant"),m_buff(FORCE),m_hp(HP){}
 void Merchant::applyEncounter(Player &player) const {
     printMerchantInitialMessageForInteractiveEncounter(std::cout, player.getName(), player.getCoins());
     std::string request;
-    int requestNum;
+    int requestNum = -1;
     while(true){
-        std::getline(std::cin, request);
-        requestNum = std::stoi(request);
-        if(requestNum == NO_ACTION || requestNum == HP || requestNum == POWER){
-            break;
+        try{
+            std::getline(std::cin, request);
+            requestNum = std::stoi(request);
+            if(!(requestNum == NO_ACTION || requestNum == HP || requestNum == POWER)){
+                throw badUserInput();
+            }
+            else{
+                break;
+            }
         }
-        printInvalidInput();
+        catch(...){
+            printInvalidInput();
+        }
     }
 
     if(requestNum == NO_ACTION){
@@ -36,6 +44,7 @@ void Merchant::applyEncounter(Player &player) const {
         }
         else{
             printMerchantInsufficientCoins(std::cout);
+            printMerchantSummary(std::cout, player.getName(), HP, 0);
             return;
         }
     }
@@ -47,6 +56,7 @@ void Merchant::applyEncounter(Player &player) const {
     }
     else{
         printMerchantInsufficientCoins(std::cout);
+        printMerchantSummary(std::cout, player.getName(), POWER, 0);
         return;
     }
 }

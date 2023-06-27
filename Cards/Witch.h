@@ -6,6 +6,7 @@ class Witch: public Battle{
 public:
     Witch();
     void applyEncounter(Player& player) const override;
+
 };
 
 #endif //EX4_WITCH_H

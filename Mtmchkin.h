@@ -2,7 +2,6 @@
 #define MTMCHKIN_H_
 #include "Card.h"
 #include "Player.h"
-#include "CardPath.h"
 #include "queue"
 #include "memory"
 #include "map"
@@ -55,8 +54,6 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
-    Mtmchkin(const Mtmchkin&) = delete;
-    Mtmchkin& operator=(const Mtmchkin& other) = delete;
 
 private:
     int m_count;
@@ -67,6 +64,8 @@ private:
     std::deque<std::shared_ptr<Player>> m_listLeaderBored;
     int m_playedTurns;
     int m_numOfPlayers;
+    Mtmchkin(const Mtmchkin&) = delete;
+    Mtmchkin& operator=(const Mtmchkin& other) = delete;
 
 };
 

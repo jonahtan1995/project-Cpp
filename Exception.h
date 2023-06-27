@@ -57,6 +57,10 @@ class badCardName:public std::exception
     }
 };
 
+class badUserInput:public std::exception
+{};
+
+
 /*
 class badDeckSize:public std::exception
 {

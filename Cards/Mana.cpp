@@ -5,8 +5,6 @@
 static const int MANA=10;
 Mana::Mana():Card("Mana"),m_buff(MANA) {}
 
-
-
 void Mana::applyEncounter(Player &player) const {
     if(player.getClass()=="Healer")
     {

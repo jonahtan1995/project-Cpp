@@ -13,7 +13,7 @@ Witch::Witch(): Battle("Witch"){
 }
 
 void Witch::applyEncounter(Player &player) const {
-    if(player.getLevel() + player.getAttackStrength() >= FORCE){
+    if( player.getAttackStrength() >= FORCE){
         player.levelUp();
         player.addCoins(LOOT);
         printWinBattle(player.getName(), this->m_name);
